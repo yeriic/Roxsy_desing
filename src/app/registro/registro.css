@@ -11,23 +11,38 @@ body{
     height: 100vh; 
 }
 
+.division{
+    display: flex;
+    justify-content: center;
+}
+
+.div_uno{
+    margin-right: 5%;
+
+}
+
+.div_dos{
+    margin-left: 5%;
+}
 
 .formulario {
-    width: 30%;
+    width: 45%;
+    height: 59vh;
     background-color: #ffffff;
-    height: 75vh;
     flex-direction: column; 
     align-items: center; 
     text-align: center;
-    border-radius: 10%;
+    border-radius: 7%;
     }
 
 .formulario img {
-	width: 50%;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+	width: 40%;
 }
 
-.formulario h3{
-    color: #333;
+.formulario h2{
+    color: #000000;
     padding-bottom: 0px;
     margin-bottom: 0px;
 }
@@ -54,11 +69,13 @@ body{
     padding: 10px;
     margin-bottom: 16px;
     box-sizing: border-box;
+    text-align: center;
 }
 
 .formulario button {
     background-color: #ffa902;
     color: #ffffff;
+    margin-top: 3%;
     padding: 10px 15px;
     border: none;
     border-radius: 4px;
@@ -67,8 +84,8 @@ body{
 
 .inputbox {
     position: relative;
-    width: 310px;
-    border-bottom: 2px solid #3E0E1F;
+    width: 250px;
+    border-bottom: 2px solid #000000;
     margin: 0 auto; 
     text-align: center;
 }
@@ -87,10 +104,6 @@ body{
     padding: 10px;
     margin: 1px;
     color: #000000;
-}
-
-.formulario button {
-    margin-top: 15px;
 }
 
 .formulario button:hover {
