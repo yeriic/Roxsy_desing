@@ -1,0 +1,14 @@
+# Ignora la carpeta node_modules
+node_modules/
+
+# Ignora las carpetas de construcción
+.next/
+out/
+
+# Ignora archivos de lock
+package-lock.json
+yarn.lock
+
+# Ignora los archivos de configuración de entorno
+.env
+.env.local
