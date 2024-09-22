@@ -11,7 +11,7 @@ export const Carrusel = () => {
         showThumbs={false}
         infiniteLoop={true}
         autoPlay={true}
-        interval={2000}
+        interval={10000}
         showStatus={false}
       >
         <div>
