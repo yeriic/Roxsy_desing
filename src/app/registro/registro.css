@@ -26,8 +26,8 @@ body{
 }
 
 .formulario {
-    width: 45%;
-    height: 75%;
+    width: 40rem;
+    height: 30rem;
     background-color: #ffffff;
     flex-direction: column; 
     align-items: center; 
