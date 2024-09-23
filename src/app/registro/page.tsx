@@ -3,32 +3,33 @@ import { useState } from 'react';
 import "./registro.css"
 
 const Registro: React.FC = () => {
-    const [usuario, setUsuario] = useState('');
+    const [nombre_usu, setnombre_usu] = useState('');
     const [nombre, setNombre] = useState('');
     const [apellido, setApellido] = useState('');
-    const [email, setEmail] = useState('');
-    const [contrasena, setContrasena] = useState('');
+    const [correo, setcorreo] = useState('');
+    const [pass, setpass] = useState('');
     const [contrasenaConfirmar, setContrasenaConfirmar] = useState('');
+    
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
        
-        if (contrasena !== contrasenaConfirmar) {
+        if (pass !== contrasenaConfirmar) {
             alert('Las contraseñas no coinciden');
             return;
         }
 
-        const res = await fetch('api/registro', {
+        const res = await fetch('/api/registro', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                usuario,
+                nombre_usu,
                 nombre,
                 apellido,
-                email,
-                contrasena,
+                correo,
+                pass,
             }),
         });
     };
@@ -42,15 +43,15 @@ const Registro: React.FC = () => {
                     <div className='division'>
                         <div className='div_uno'>
                             <div className="inputbox">
-                                <label htmlFor="usuario">Nombre de usuario</label>
+                                <label htmlFor="nombre_usu">Nombre de usuario</label>
                                 <input 
                                     type="text" 
-                                    id="usuario" 
-                                    name="usuario" 
+                                    id="nombre_usu" 
+                                    name="nombre_usu" 
                                     placeholder="Ingrese su nombre de usuario" 
                                     required
-                                    value={usuario}
-                                    onChange={(e) => setUsuario(e.target.value)}
+                                    value={nombre_usu}
+                                    onChange={(e) => setnombre_usu(e.target.value)}
                                 />
                             </div>
 
@@ -82,15 +83,15 @@ const Registro: React.FC = () => {
                         </div>
                         <div className='div_dos'>
                             <div className="inputbox">
-                                <label htmlFor="email">Correo electrónico</label>
+                                <label htmlFor="correo">Correo electrónico</label>
                                 <input 
-                                    type="email" 
-                                    id="email" 
-                                    name="email" 
+                                    type="correo" 
+                                    id="correo" 
+                                    name="correo" 
                                     placeholder="Ingrese su correo electronico" 
                                     required
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    value={correo}
+                                    onChange={(e) => setcorreo(e.target.value)}
                                 />
                             </div>
 
@@ -102,8 +103,8 @@ const Registro: React.FC = () => {
                                     name="contrasena" 
                                     placeholder="Ingrese su contraseña" 
                                     required
-                                    value={contrasena}
-                                    onChange={(e) => setContrasena(e.target.value)}
+                                    value={pass}
+                                    onChange={(e) => setpass(e.target.value)}
                                 />
                             </div>
 
