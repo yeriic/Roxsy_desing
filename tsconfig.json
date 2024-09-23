@@ -22,6 +22,6 @@
 
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/Comp/carrusel.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/Comp/carrusel.jsx", "src/pages/api/index.jsx"],
   "exclude": ["node_modules"]
 }
