@@ -1,6 +1,7 @@
 "use client"
 import { useState } from 'react';
 import "./registro.css"
+import Swal from 'sweetalert2';
 
 const Registro: React.FC = () => {
     const [nombre_usu, setnombre_usu] = useState('');
@@ -32,7 +33,34 @@ const Registro: React.FC = () => {
                 pass,
             }),
         });
+
+        if(res.ok){
+            Swal.fire({
+                title: "Exitoso",
+                text: "Se ha regitrado al usuario con exito",
+                icon: "success",
+                timer: 5000,
+	            timerProgressBar: true
+            })
+        } else {
+            Swal.fire({
+                title: "Error",
+                text: "no se ha regitrado al usuario con exito",
+                icon: "error",
+                timer: 5000,
+	            timerProgressBar: true
+            })
+
+        } 
     };
+    
+    const aletregistro = () => {
+        Swal.fire({
+            title: "Error",
+            text: "No se ha regitrado al usuario",
+            icon: "error"
+          });
+    }
 
     return (
         <div className="contenedor">
@@ -122,10 +150,11 @@ const Registro: React.FC = () => {
                             </div>
                         </div>
                     </div>
-                    <button type="submit">Registrarse</button>
+                    <button onClick ={aletregistro} type="submit">Registrarse</button>
                 </form>
             </div>
         </div>
+    
     );
 };
 
