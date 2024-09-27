@@ -1,5 +1,6 @@
 "use client"
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import "./registro.css"
 import Swal from 'sweetalert2';
 
@@ -10,14 +11,22 @@ const Registro: React.FC = () => {
     const [correo, setcorreo] = useState('');
     const [pass, setpass] = useState('');
     const [contrasenaConfirmar, setContrasenaConfirmar] = useState('');
+
+    const router = useRouter();
     
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
        
         if (pass !== contrasenaConfirmar) {
-            alert('Las contraseñas no coinciden');
-            return;
+            Swal.fire({
+                title: "Error",
+                html:"<h3>La contraseñas no coinciden</h3>",
+                icon: "error",
+                allowOutsideClick: true,
+                timer: 5000,
+                timerProgressBar: true,
+            })
         }
 
         const res = await fetch('/api/registro', {
@@ -39,28 +48,25 @@ const Registro: React.FC = () => {
                 title: "Exitoso",
                 text: "Se ha regitrado al usuario con exito",
                 icon: "success",
+                allowOutsideClick: true,
                 timer: 5000,
-	            timerProgressBar: true
-            })
-        } else {
-            Swal.fire({
-                title: "Error",
-                text: "no se ha regitrado al usuario con exito",
-                icon: "error",
-                timer: 5000,
-	            timerProgressBar: true
+                timerProgressBar: true,
+                
             })
 
-        } 
+            setnombre_usu('');
+            setNombre('');
+            setApellido('');
+            setcorreo('');
+            setpass('');
+            setContrasenaConfirmar('');
+
+            setTimeout(() => {
+                router.push('/pagina-de-destino');
+            }, 5000);
+        }
     };
     
-    const aletregistro = () => {
-        Swal.fire({
-            title: "Error",
-            text: "No se ha regitrado al usuario",
-            icon: "error"
-          });
-    }
 
     return (
         <div className="contenedor">
@@ -150,7 +156,7 @@ const Registro: React.FC = () => {
                             </div>
                         </div>
                     </div>
-                    <button onClick ={aletregistro} type="submit">Registrarse</button>
+                    <button type="submit">Registrarse</button>
                 </form>
             </div>
         </div>
