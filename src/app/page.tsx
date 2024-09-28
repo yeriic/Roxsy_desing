@@ -29,12 +29,14 @@ const Login: React.FC = () => {
 
             if (res.status === 401) {
                 Swal.fire({
-                    title: "Error",
-                    text: "Usuario/correo o contraseña incorrecta",
+                    html: "<b>Usuario/correo o contraseña incorrecta</b>",
                     icon: "error",
                     allowOutsideClick: true,
-                    timer: 5000,
+                    timer: 2500,
                     timerProgressBar: true,
+                    toast: true,
+                    position: 'top-start',
+                    showConfirmButton: false,
                 });
             }
 
@@ -43,18 +45,20 @@ const Login: React.FC = () => {
                 setusuarioOEmail('');
                 Swal.fire({
                     title: "Exitoso",
-                    text: "Se ha regitrado al usuario con exito",
+                    text: `Bienvenido ${data.nombre} ${data.apellido}`,
                     icon: "success",
                     allowOutsideClick: true,
-                    timer: 1000,
+                    timer: 1100,
                     timerProgressBar: true,
-                    
+                    toast: true,
+                    position: 'top-start',
+                    showConfirmButton: false,
                 })
 
                 setTimeout(() => {
                    
                     router.replace('/main');
-                }, 1000);
+                }, 1100);
             }
 
     }
@@ -65,9 +69,8 @@ const Login: React.FC = () => {
                 <img src="foto_sesion/logo.png" alt="Logo de la página" />
                 <h3 className="titulo">Iniciar sesión</h3>
                 <p className="registrarse-link">
-                    ¿No tiene una cuenta? <a href="registro">Registrarse</a>
+                    ¿No tienes una cuenta? <a href="registro">Registrarse</a>
                 </p>
-                {/* cambiar el action al hacer el back */}
                 <form onSubmit={handleSubmit}> 
                     <div className="inputbox">
                         <label htmlFor="usuarioOEmail">Usuario o Correo</label>

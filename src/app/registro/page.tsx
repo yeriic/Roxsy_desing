@@ -22,12 +22,14 @@ const Registro: React.FC = () => {
        
         if (pass !== contrasenaConfirmar) {
             Swal.fire({
-                title: "Error",
-                html:"<h3>La contraseñas no coinciden</h3>",
+                html:"<h3>Las contraseñas no coinciden</h3>",
                 icon: "error",
                 allowOutsideClick: true,
-                timer: 5000,
+                timer: 2000,
+                toast: true,
                 timerProgressBar: true,
+                showConfirmButton:false,
+                position: "top"
             })
 
         } else {
@@ -49,12 +51,14 @@ const Registro: React.FC = () => {
 
             if (res.status === 400) {
                 Swal.fire({
-                    title: "Error",
-                    text: data.error,
+                    html: data.error,
                     icon: "error",
                     allowOutsideClick: true,
-                    timer: 5000,
+                    timer: 2000,
+                    toast: true,
                     timerProgressBar: true,
+                    showConfirmButton:false,
+                    position: "top"
                 });
             }
 
@@ -71,15 +75,16 @@ const Registro: React.FC = () => {
                     text: "Se ha regitrado al usuario con exito",
                     icon: "success",
                     allowOutsideClick: true,
-                    timer: 5000,
+                    timer: 2000,
                     timerProgressBar: true,
+                    showConfirmButton:false,
                     
                 })
 
                 setTimeout(() => {
                    
                     router.replace('/');
-                }, 5000);
+                }, 2100);
             }
         }
     };
