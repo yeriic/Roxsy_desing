@@ -1,9 +1,64 @@
 'use client'
-import React from 'react';
+import React, { useState } from 'react';
 import { Carrusel } from "./Comp/carrusel";
 import "./sesion.css";
+import Swal from 'sweetalert2';
+import { useRouter } from 'next/navigation';
 
 const Login: React.FC = () => {
+
+        const [usuarioOEmail, setusuarioOEmail] = useState('');
+        const [pass, setpass] = useState('');
+        const router = useRouter();
+
+        const handleSubmit = async (e: React.FormEvent) =>{
+            e.preventDefault(); 
+    
+        const res = await fetch('/api/sesion', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                usuarioOEmail,
+                pass,
+            }),
+        });
+
+        const data = await res.json();
+
+            if (res.status === 401) {
+                Swal.fire({
+                    title: "Error",
+                    text: "Usuario/correo o contraseña incorrecta",
+                    icon: "error",
+                    allowOutsideClick: true,
+                    timer: 5000,
+                    timerProgressBar: true,
+                });
+            }
+
+            if(res.ok){
+                setpass('');
+                setusuarioOEmail('');
+                Swal.fire({
+                    title: "Exitoso",
+                    text: "Se ha regitrado al usuario con exito",
+                    icon: "success",
+                    allowOutsideClick: true,
+                    timer: 1000,
+                    timerProgressBar: true,
+                    
+                })
+
+                setTimeout(() => {
+                   
+                    router.replace('/main');
+                }, 1000);
+            }
+
+    }
+
     return (
         <div className="contenedor">
             <div className="formulario">
@@ -13,17 +68,20 @@ const Login: React.FC = () => {
                     ¿No tiene una cuenta? <a href="registro">Registrarse</a>
                 </p>
                 {/* cambiar el action al hacer el back */}
-                <form action="home" method="post"> 
+                <form onSubmit={handleSubmit}> 
                     <div className="inputbox">
-                        <label htmlFor="usuario">Usuario</label>
+                        <label htmlFor="usuarioOEmail">Usuario o Correo</label>
                         <input
                             type="text"
-                            id="usuario"
-                            name="usuario"
-                            placeholder="Ingrese su usuario"
+                            id="usuarioOEmail"
+                            name="usuarioOEmail"
+                            placeholder="Ingrese su usuario o correo"
+                            value={usuarioOEmail}
+                            onChange={(e) => setusuarioOEmail(e.target.value)}
                             required
                         />
                     </div>
+
                     <div className="inputbox">
                         <label htmlFor="contrasena">Contraseña</label>
                         <input
@@ -31,6 +89,8 @@ const Login: React.FC = () => {
                             id="contrasena"
                             name="contrasena"
                             placeholder="Ingrese su contraseña"
+                            value={pass}
+                            onChange={(e) => setpass(e.target.value)}
                             required
                         />
                     </div>
@@ -38,7 +98,7 @@ const Login: React.FC = () => {
                 </form>
             </div>
             <div className="productos">
-                <Carrusel />
+                <Carrusel/>
             </div>
         </div>
     );

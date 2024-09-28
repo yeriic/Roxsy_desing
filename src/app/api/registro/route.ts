@@ -2,19 +2,27 @@ import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 
-const prisma = new PrismaClient();
 
+const prisma = new PrismaClient();
 
 export async function POST(req: NextRequest) {
     const { nombre, apellido, nombre_usu, correo, pass } = await req.json();
 
-    const usuarioExistente = await prisma.usuarios.findUnique({
+    const correoExistente = await prisma.usuarios.findUnique({
         where: { correo }
     });
 
-    if (usuarioExistente) {
+    const usuarioExistente = await prisma.usuarios.findUnique({
+        where: { nombre_usu }
+    });
+
+    if (correoExistente) {
         return NextResponse.json({ error: 'Este correo electrónico ya está registrado.' }, { status: 400 });
-    }
+    } 
+
+    if (usuarioExistente) {
+        return NextResponse.json({ error: 'Este usuario ya está registrado.' }, { status: 400 });
+    } 
 
     const contrasena_hash = await bcrypt.hash(pass, 10);
 
