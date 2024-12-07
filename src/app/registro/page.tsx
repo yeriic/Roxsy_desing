@@ -2,10 +2,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import "./registro.css"
-import { PrismaClient } from "@prisma/client";
 import Swal from 'sweetalert2';
-
-const prisma = new PrismaClient();
 
 const Registro: React.FC = () => {
     const [nombre_usu, setnombre_usu] = useState('');

@@ -1,0 +1,15 @@
+.carrusel {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-content: center;
+    max-height: 100vh;
+    overflow: hidden;
+    border-color: #F88020;
+}
+
+.carrusel img {
+   width: calc(100% / 4);
+   height: auto;
+}

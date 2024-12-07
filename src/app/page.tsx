@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react';
-import { Carrusel } from "./Comp/carrusel";
+import { Carrusel } from "./Comp/carrusel/carrusel";
 import "./sesion.css";
 import Swal from 'sweetalert2';
 import { useRouter } from 'next/navigation';

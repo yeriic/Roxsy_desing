@@ -1,10 +1,15 @@
 
-
+import { Barrasup } from "../Comp/navbar/barrasup"
 
 const main: React.FC = () => {
 
     return(
-       <h2>hola</h2>
+        <>
+            <Barrasup />
+
+            <h2>hola</h2>
+        </>
+     
     );
 };
 
