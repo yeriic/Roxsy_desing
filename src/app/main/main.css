@@ -1,0 +1,15 @@
+.limitador {
+    width: 950px;
+    height: 500px;
+    margin: 0 auto; 
+    background-color: white;
+  }
+
+  .bordes {
+    margin: 0 auto;
+    max-width: 950px;
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+    border-image: linear-gradient(to bottom, #b8f7ed, #bc06ff, #ffa902) 1;
+    border-image-slice: 5;
+  }

@@ -8,7 +8,6 @@ export const Barrasup = () => {
 
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Asegúrate de que la función está definida
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
@@ -28,6 +27,12 @@ export const Barrasup = () => {
         />
     
       <form onSubmit={handleSearchSubmit} className="searchContainer">
+       
+      <button type="submit" className="searchButton">
+          <Search size={20} />
+      </button>
+        
+        <div className='input'> 
         <input 
           type="text" 
           placeholder="Buscar..." 
@@ -35,9 +40,8 @@ export const Barrasup = () => {
           onChange={handleSearchChange}
           className="searchInput"
         />
-        <button type="submit" className="searchButton">
-          <Search size={20} />
-        </button>
+        </div> 
+
       </form>
 
       <div className="actionContainer">

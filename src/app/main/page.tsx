@@ -1,13 +1,19 @@
 
 import { Barrasup } from "../Comp/navbar/barrasup"
+import "./main.css"
 
 const main: React.FC = () => {
 
     return(
         <>
-            <Barrasup />
+        <Barrasup />
+        <div className="bordes">
+            <div className="limitador">
+                <nav> 
 
-            <h2>hola</h2>
+                </nav>
+            </div>
+        </div>
         </>
      
     );
